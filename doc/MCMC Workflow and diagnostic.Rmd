@@ -1,0 +1,130 @@
+---
+title: "MCMC recommended practice : workflow and diagnostic"
+author: "Wang GAO"
+date: "18/06/2019"
+output: 
+  ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Warmup
+
+## Logique de diagnostic {.build}
+
+### Diagnostic in Real life :
+
+- A doctor can never prove you are **healthy**. 
+    - If (no **medical test** shows any sign of you being **sick**)
+    - Then (they **consider / believe** you are **healthy**).
+
+### Diagnostic of MCMC (<span style="color:red">Take-home message</span>) :
+
+- You can never prove MCMC chains **converge**. 
+    - If (no **statistical diagnostic / test** shows any sign of **divergence**)
+    - Then (you **admet / believe** the chains **converge**).
+
+**One-vote veto** $$\exists\; \text{diagnostic showing non-divergence } \Rightarrow \mathbb{P}(\text{convergence}) = 1- \mathbb{P}(\text{divergence}) = 0 $$
+
+Otherwize, **The more, the better**  
+
+$$nb(\text{diagnostic showing non-divergence}) \nearrow \quad \Rightarrow \mathbb{P}(\text{convergence}) \nearrow$$
+
+
+---
+
+### Logique (mathématique) :
+
+- Si MCMC converge (noté $P$), alors on a $Q_1$ et $Q_2$ et $Q_3$ et $\ldots$
+$$P \Rightarrow \left\{
+Q_1 \;\text{and}\;  Q_2 \;\text{and}\;  Q_3 \;\text{and}\;  \cdots
+\right\}$$
+
+D'une manière équivalente :
+
+- Si on n'a pas $Q_1$ ou n'a pas $Q_2$ ou n'a pas $Q_3$ ou ..., alors diverge (noté $\neg P$) 
+
+$$\left\{
+\neg Q_1 \;\text{or}\;  \neg Q_2 \;\text{or}\;  \neg Q_3 \;\text{or}\;  \cdots
+\right\} \Rightarrow \neg P$$
+
+### Probabilistic interpertation
+
+- S'il existe un diagnostic qui <span style="color:blue">va mal</span>, alors <span style="color:green">divergence</span> :
+$$\mathbb{P}({\color{green}{\neg P} } \mid \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3 \;\text{or}\; \cdots ) = 1$$
+- Si <span style="color:red">rien</span> ne <span style="color:blue">va mal</span>, alors plus de diagnostics réduisent la proba de <span style="color:green">divergence</span> :
+$$\begin{align*} 
+          \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1) \right) \quad 
+& \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2)\right) \\ 
+& \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3) \right) \\
+& \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3 \;\text{or}\; \cdots)\right) \\
+\end{align*}$$
+
+
+# Récap Modélisation : Pourquoi MCMC ?
+
+## {.build}
+
+### From **Context** to **Model**
+
+- $Context \Rightarrow Model \Rightarrow Data$
+- $Context \Rightarrow Data \Rightarrow Model$
+
+### From **Data** to **Parameter learning**
+
+Bayesien parameter learning (= inference / calibration / estimation) approach: 
+
+- Use **Data** to update what we know about parameters.
+- Use **Likelihood** to update the **prior** distribution of parameters
+$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$
+  - $Data + Model \Rightarrow Likelihood$
+  - $Context \Rightarrow \text{Prior distribution}$
+
+- En pratique : <span style="color:red">MCMC method</span>
+  - Metropolis Hastings sampling algorithm (<span style="color:red">MCsim</span>)
+  - Gibbs sampling algorithm
+  - Hamiltonian sampling algorithm (Stan, [SFdS] Ateliers Statistiques 2019)
+
+## Workflow / strategy
+
+Biblio : Handbook of MCMC Chap 6 (Andrew Gelman and Kenneth Shirley)
+
+1. Simulated three or more chains in parallel with random start.
+2. <span style="color:red">Check convergence</span> (coda, <span style="color:red">shinystan</span>)
+    - Within-chain analysis to monitor stationarity (e.g. traceplot)
+    - between/within chains comparisons to monitor mixing (e.g. traceplot, $\hat{R}$, etc)
+3. If no sign of divergence, mix all the simulations from the second halves of the chains together to summarize the target distribution.
+    - summary : (coda / <span style="color:red">shinystan</span>)
+        - maximum a posteriori
+        - mean a posteriori
+        - effective sample size
+        - quantiles
+        - mcmc stander error
+
+---
+
+4. If divergence detected, 
+    - possible reasons :
+        - Programming error (sometimes difficult to find)
+        - Poor priors
+        - Parameters are too correlated (identifiability problem)
+        - complex posterior
+        - Wrong model !!!
+    - possible solutions : 
+        - long run (continue from where last MCMC ended)
+5. If long run does not solve the problem
+    - back to change model / change parametrization
+    - ~~back to mcmc algorithms~~ (partially done by MCsim)
+6. Compare inferences to those from simpler models or approximations
+    - programming errors,
+    - poor convergence,
+    - actual changes in inferences as the model is expanded.
+
+
+    
+        
+
+
