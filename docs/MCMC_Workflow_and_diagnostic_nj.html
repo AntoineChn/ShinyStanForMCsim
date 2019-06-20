@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-960b33d7907a70d66ec9" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-960b33d7907a70d66ec9">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-66c6c004a9f82f65835e" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-66c6c004a9f82f65835e">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-97e2782890897817a48a" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-97e2782890897817a48a">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-968ae87d5098a2841297" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-968ae87d5098a2841297">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -146,8 +146,8 @@ A un moment donné, on a
 - &lt;span style="color:red"&gt;**Bayésienne**&lt;/span&gt; inference approach
     - Use **Likelihood** to update the **prior** distribution of parameters
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
-<div id="htmlwidget-45e3261612de108cb70a" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-45e3261612de108cb70a">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-218c786dd1e9067d60c8" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-218c786dd1e9067d60c8">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -296,7 +296,7 @@ source code available [here](https://github.com/AntoineChn/ShinyStanForMCsim)
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": true
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
