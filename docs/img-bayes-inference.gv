@@ -1,0 +1,14 @@
+digraph {
+  # a 'graph' statement
+  graph [overlap = true, fontsize = 5]
+  
+  # add node statements
+  node [shape = box]
+  Contexte ; Data ; Model ; 
+  Prior ; Likelihood ; Posterior
+
+  # add edge statements
+  Contexte -> Prior ;
+  {Data  Model} -> Likelihood ;
+  {Prior Likelihood} -> Posterior
+}

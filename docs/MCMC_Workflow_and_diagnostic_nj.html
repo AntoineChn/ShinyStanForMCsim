@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>MCMC : recommended practice</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Wang GAO" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# MCMC : recommended practice
+## Workflow and diagnostic
+### Wang GAO
+### 21/06/2019
+
+---
+
+
+
+
+&lt;!-- --- --&gt;
+&lt;!-- class: center, middle --&gt;
+
+&lt;!-- # xaringan --&gt;
+
+&lt;!-- ### /ʃaː.'riŋ.ɡan/ --&gt;
+
+---
+class: inverse, center, middle
+# Warmup
+
+---
+
+## Logique de diagnostic
+
+--
+
+### Diagnostic in Real life :
+
+- A doctor can never prove that you are **healthy**.
+    - If (no **medical test** shows any sign of you being **sick**)
+    - Then (they **consider / believe** you are **healthy**).
+
+--
+
+### Diagnostic of MCMC (&lt;span style="color:red"&gt;Take-home message&lt;/span&gt;) :
+- You can never prove that MCMC chains **converge**.
+    - If (no **statistical diagnostic / test** shows any sign of **divergence**)
+    - Then (you **admet / believe** the chains **converge**).
+
+--
+
+**One-vote veto**
+$$\small\exists\; \text{diagnostic showing non-divergence } \Rightarrow \mathbb{P}(\text{convergence}) = 1- \mathbb{P}(\text{divergence}) = 0 $$
+
+--
+
+**The more, the better**
+`$$\small nb(\text{diagnostic showing non-divergence}) \nearrow \quad \Rightarrow \mathbb{P}(\text{convergence}) \nearrow$$`
+
+---
+
+## Logique (mathématique) :
+
+- Si MCMC converge (noté `\(P\)`), alors on a `\(Q_1\)` et `\(Q_2\)` et `\(Q_3\)` et `\(\ldots\)`
+`$$\small P \Rightarrow \left\{
+Q_1 \;\text{and}\;  Q_2 \;\text{and}\;  Q_3 \;\text{and}\;  \cdots
+\right\}$$`
+
+D'une manière équivalente :
+
+- Si on n'a pas `\(Q_1\)` ou n'a pas `\(Q_2\)` ou n'a pas `\(Q_3\)` ou ..., alors diverge (noté `\(\neg P\)`) 
+`$$\small \left\{
+\neg Q_1 \;\text{or}\;  \neg Q_2 \;\text{or}\;  \neg Q_3 \;\text{or}\;  \cdots
+\right\} \Rightarrow \neg P$$`
+
+--
+
+**Probabilistic interpertation :**
+
+- S'il existe un diagnostic qui &lt;span style="color:blue"&gt;va mal&lt;/span&gt;, alors &lt;span style="color:green"&gt;divergence&lt;/span&gt; :
+`$$\small \mathbb{P}({\color{green}{\neg P} } \mid \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3 \;\text{or}\; \cdots ) = 1$$`
+
+
+- Si &lt;span style="color:red"&gt;rien&lt;/span&gt; ne &lt;span style="color:blue"&gt;va mal&lt;/span&gt;, alors plus de diagnostics réduisent la proba de &lt;span style="color:green"&gt;divergence&lt;/span&gt; :
+`$$\small \begin{align*}\mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1) \right) \quad 
+&amp; \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2)\right) \\ 
+&amp; \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3) \right) \\
+&amp; \geq \; \mathbb{P}\left( \color{green}{\neg P} \mid \color{red}\neg ( \color{blue}\neg Q_1 \; {\text{or}} \; \color{blue}\neg Q_2 \;\text{or}\; \color{blue}\neg Q_3 \;\text{or}\; \cdots)\right) \\
+\end{align*}$$`
+
+---
+class: inverse, middle, center
+
+# Modélisation
+
+Que fait MCMC ?
+
+---
+
+### Modélisation : **Context**, **Model** and **Data**
+
+--
+
+.pull-left[
+<div id="htmlwidget-960b33d7907a70d66ec9" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-960b33d7907a70d66ec9">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+--
+
+.pull-right[
+<div id="htmlwidget-97e2782890897817a48a" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-97e2782890897817a48a">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+--
+
+A un moment donné, on a
+
+- Context
+- Model (paramétrique)
+- Data
+
+--
+
+&lt;span style="color:red"&gt;Message&lt;/span&gt; : Le modèle doit être &lt;span style="color:red"&gt;paramétrique&lt;/span&gt; pour utiliser la méthode MCMC.
+
+---
+
+### Modélisation : Parameter learning `\(\tiny\text{/ inference / calibration / estimation}\)`
+
+- Use **Data** to update what we know about parameters.
+
+#### Approaches :
+
+- Frequentist inference approach
+    - Use **Likelihood** to learn parameters `\(\theta\)` from data `\(\mathcal{D}\)`
+- &lt;span style="color:red"&gt;**Bayésienne**&lt;/span&gt; inference approach
+    - Use **Likelihood** to update the **prior** distribution of parameters
+`$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
+<div id="htmlwidget-45e3261612de108cb70a" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-45e3261612de108cb70a">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+### Why simulation ?
+
+#### Example : estimate l'aire par simulation (Monte Carlo)
+
+.pull-left[
+&lt;img src="MCMC_Workflow_and_diagnostic_nj_files/figure-html/unnamed-chunk-4-1.png" width="150px" /&gt;
+]
+
+--
+
+.pull-right[
+&lt;img src="./img/mc_losange.jpg" width="150px" /&gt;
+]
+
+--
+
+- **Ci-dessus**, simulation Monte Carlo : Méthode générale pour calculer l'**aire**
+
+`$$\small \frac{nb(Rouges)}{nb(Total)} * Aire(Total) \longrightarrow Aire(polygone)$$`
+
+--
+
+- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour la distribution *a postériori*. *e.g.*
+
+`$$\small Histogramme(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$`
+
+--
+
+&lt;span style="color:red"&gt;Approximation MCMC&lt;/span&gt; marche si les chaines &lt;span style="color:red"&gt;convergent&lt;/span&gt; !!!
+
+---
+class: inverse, middle, center
+
+# MCMC : Workflow / Strategy
+
+Biblio : Handbook of MCMC chap 6
+
+by 
+- Andrew Gelman
+- Kenneth Shirley
+
+---
+
+1. Simulate three or more chains in parallel with random start.
+
+--
+2. Check &lt;span style="color:red"&gt;convergence&lt;/span&gt; (coda, &lt;span style="color:red"&gt;shinystan&lt;/span&gt;)
+    - Within-chain analysis to monitor stationarity (e.g. traceplot)
+    - between/within chains comparisons to monitor mixing (e.g. `\(\color{red}{\hat{R}}\)`)
+--
+3. If no sign of divergence, mix all the simulations from the second halves of the chains together to summarize the target distribution.
+    - summary : (coda / &lt;span style="color:red"&gt;shinystan&lt;/span&gt;)
+        - maximum a posteriori / mean a posteriori
+        - quantiles
+        - mcmc stander error
+        - effective sample size
+--
+4. If divergence detected, 
+    - possible reasons :
+        - too short chains
+        - Programming error (sometimes difficult to find)
+        - Poor priors
+        - Parameters are too correlated (identifiability problem)
+        - complex posterior
+        - Wrong model !!!
+    - possible solutions : 
+        - long run (continue from where last MCMC ended)
+--
+5. If long run does not solve the problem
+    - back to change model / change parametrization
+    - ~~back to mcmc algorithms~~ (partially done by MCsim)
+--
+6. Compare inferences to those from simpler models or approximations
+    - programming errors / actual changes in inferences.
+
+---
+class: inverse, middle, center
+
+# MCMC : Diagnostics
+
+With demo in shinystan
+
+---
+
+## Recalls
+
+### Possible reasons of divergence :
+- too short chains
+- Programming error (sometimes difficult to find)
+- Poor priors
+- Parameters are too correlated (identifiability problem)
+- complex posterior
+- Wrong model !!!
+
+### Diagnostic of MCMC (&lt;span style="color:red"&gt;Take-home message&lt;/span&gt;) :
+- You can never prove that MCMC chains **converge**.
+    - If (no **statistical diagnostic / test** shows any sign of **divergence**)
+    - Then (you **admet / believe** the chains **converge**).
+
+---
+
+## Brainstorming : how to check divergence
+
+Any suggestion ?
+
+### Recall : Possible reasons of divergence :
+- too short chains : high correlation, start value bias
+- Programming error (sometimes difficult to find)
+- Poor priors
+- Parameters are too correlated (identifiability problem)
+- complex posterior
+- Wrong model !!!
+
+&lt;!-- ??? --&gt;
+
+&lt;!-- - Trace plot --&gt;
+&lt;!-- - autocorrelation --&gt;
+&lt;!-- - n_effectif --&gt;
+&lt;!-- - R_hat --&gt;
+&lt;!-- - MAP --&gt;
+&lt;!-- - Histogramme marginal / Kernel Density Estimate --&gt;
+
+---
+
+## How to check divergence (méthode générale)
+
+![](./img/trace_autocorrelation.jpg)&lt;!-- --&gt;
+
+- `\(\hat{R} \simeq 1\)`, `\(\hat{R} \leq 1.1\)`
+- `\(N_{eff}\)` estimé suffisamment grand et `\(N_{eff} / N_{total}\)` grand
+- auto correlation
+- correlation
+
+---
+class: inverse, middle, center
+
+# Demo in shinystan
+
+source code available [here](https://github.com/AntoineChn/ShinyStanForMCsim)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

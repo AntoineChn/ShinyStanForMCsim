@@ -1,0 +1,13 @@
+digraph {
+  # a 'graph' statement
+  graph [overlap = true, fontsize = 5]
+  
+  # add node statements
+  node [shape = box]
+  Contexte; Problème ; Data ; Modèle
+
+  # add edge statements
+  Contexte -> {Problème Data Modèle} ;
+  Problème -> Data;
+  Data -> Modèle ;
+}
