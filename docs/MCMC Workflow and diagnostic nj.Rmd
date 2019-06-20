@@ -183,7 +183,7 @@ $$\small \frac{nb(Rouges)}{nb(Total)} * Aire(Total) \longrightarrow Aire(polygon
 
 --
 
-- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour la distribution *a postériori*. *e.g.*
+- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour les simuler la distribution *a posteriori*. *e.g.*
 
 $$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$
 
