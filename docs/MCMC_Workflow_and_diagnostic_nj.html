@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-d96d049bacafff4c46a9" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d96d049bacafff4c46a9">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7367b212a96fbe56a4c2" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7367b212a96fbe56a4c2">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-f732b0ab8d32e8659c43" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f732b0ab8d32e8659c43">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-03688bf6653d52055425" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-03688bf6653d52055425">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -131,7 +131,7 @@ A un moment donné, on a
 
 --
 
-&lt;span style="color:red"&gt;Message&lt;/span&gt; : Le modèle doit être &lt;span style="color:red"&gt;paramétrique&lt;/span&gt; pour utiliser la méthode MCMC.
+&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; : Le modèle doit être &lt;span style="color:red"&gt;paramétrique&lt;/span&gt; pour utiliser la méthode MCMC.
 
 ---
 
@@ -151,8 +151,8 @@ A un moment donné, on a
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
 
 --
-<div id="htmlwidget-e4c703a4e6947793c1a1" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e4c703a4e6947793c1a1">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-362042699a7cd2acb883" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-362042699a7cd2acb883">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -185,7 +185,7 @@ A un moment donné, on a
 
 --
 
-&lt;span style="color:red"&gt;Approximation MCMC&lt;/span&gt; marche si les chaines &lt;span style="color:red"&gt;convergent&lt;/span&gt; !!!
+&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; Approximation MCMC marche si les chaines &lt;span style="color:red"&gt;convergent&lt;/span&gt; !!!
 
 ---
 class: inverse, middle, center

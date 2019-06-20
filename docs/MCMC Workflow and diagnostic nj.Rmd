@@ -125,7 +125,7 @@ A un moment donné, on a
 
 --
 
-<span style="color:red">Message</span> : Le modèle doit être <span style="color:red">paramétrique</span> pour utiliser la méthode MCMC.
+<span style="color:red">T-M Message</span> : Le modèle doit être <span style="color:red">paramétrique</span> pour utiliser la méthode MCMC.
 
 ---
 
@@ -189,7 +189,7 @@ $$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$
 
 --
 
-<span style="color:red">Approximation MCMC</span> marche si les chaines <span style="color:red">convergent</span> !!!
+<span style="color:red">T-M Message</span> Approximation MCMC marche si les chaines <span style="color:red">convergent</span> !!!
 
 ---
 class: inverse, middle, center
