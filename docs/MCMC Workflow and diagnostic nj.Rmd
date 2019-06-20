@@ -133,22 +133,28 @@ A un moment donné, on a
 
 - Use **Data** to update what we know about parameters.
 
+--
+
 #### Approaches :
 
 - Frequentist inference approach
     - Use **Likelihood** to learn parameters $\theta$ from data $\mathcal{D}$
-- <span style="color:red">**Bayésienne**</span> inference approach
+- <span style="color:red">**Bayesian**</span> inference approach
     - Use **Likelihood** to update the **prior** distribution of parameters
+    
 $$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$
+
+--
 ```{r echo=FALSE, cache=FALSE, fig.height = 3.5}
 grViz("img-bayes-inference.gv")
 ```
 
+
 ---
 
-### Why simulation ?
+### Why Monte Carlo simulation ?
 
-#### Example : estimate l'aire par simulation (Monte Carlo)
+#### Example : estimater l'aire par simulation Monte Carlo
 
 .pull-left[
 ```{r echo=FALSE, out.width = "150px"}
@@ -179,7 +185,7 @@ $$\small \frac{nb(Rouges)}{nb(Total)} * Aire(Total) \longrightarrow Aire(polygon
 
 - Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour la distribution *a postériori*. *e.g.*
 
-$$\small Histogramme(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$
+$$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$
 
 --
 
