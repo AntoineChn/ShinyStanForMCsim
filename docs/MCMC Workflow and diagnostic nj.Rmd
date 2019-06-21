@@ -146,7 +146,7 @@ $$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \ti
 
 --
 .pull-left[
-Etant donnée
+Etant donnée (c.f. page 7)
 
 - Contexte du problème
 - Modèle (parametres inconnus) 
