@@ -96,7 +96,7 @@ Que fait MCMC ?
 
 ---
 
-### Modélisation : **Context**, **Model** and **Data**
+### Modélisation : **Contexte**, **Modèle** et **Data**
 
 --
 
@@ -119,13 +119,13 @@ grViz("img-modelisation-data-model.gv")
 
 A un moment donné, on a
 
-- Context
-- Model (paramétrique)
-- Data
+- Contexte (du problème envisagé)
+- Modèle (avec des parametres inconnus) 
+- Données
 
 --
 
-<span style="color:red">T-M Message</span> : Le modèle doit être <span style="color:red">paramétrique</span> pour utiliser la méthode MCMC.
+<span style="color:red">T-M Message</span> : La méthode MCMC n'envisage que les modèles  **paramétriques**.
 
 ---
 
@@ -145,9 +145,21 @@ A un moment donné, on a
 $$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$
 
 --
+.pull-left[
+Etant donnée
+
+- Contexte du problème
+- Modèle (parametres inconnus) 
+- Données
+]
+
+--
+
+.pull-right[
 ```{r echo=FALSE, cache=FALSE, fig.height = 3.5}
 grViz("img-bayes-inference.gv")
 ```
+]
 
 
 ---
@@ -177,19 +189,19 @@ knitr::include_graphics("./img/mc_losange.jpg")
 
 --
 
-- **Ci-dessus**, simulation Monte Carlo : Méthode générale pour calculer l'**aire**
+- **Ci-dessus**, simulation Monte Carlo : Méthode générale pour **calculer l'aire**
 
 $$\small \frac{nb(Rouges)}{nb(Total)} * Aire(Total) \longrightarrow Aire(polygone)$$
 
 --
 
-- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour les simuler la distribution *a posteriori*. *e.g.*
+- Dans l'**apprentissage bayésien des paramètres**, MCMC : méthode générale pour **echantillonner selon la distribution _a posteriori_**. *e.g.*
 
 $$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$
 
 --
 
-<span style="color:red">T-M Message</span> Approximation MCMC marche si les chaines <span style="color:red">convergent</span> !!!
+<span style="color:red">T-M Message</span> : Approximation MCMC marche si les chaines <span style="color:red">convergent</span> !!!
 
 ---
 class: inverse, middle, center
@@ -247,7 +259,7 @@ With demo in shinystan
 
 ---
 
-## Recalls
+## Recall
 
 ### Possible reasons of divergence :
 - too short chains
@@ -268,13 +280,15 @@ With demo in shinystan
 
 Any suggestion ?
 
-- Trace plot
+- MCMC Trace plot
 - k-lag autocorrelation plot
 - correlation plot
-- $N_{eff}$ : Nombre effectif
+- $N_{eff}$ : Effectif Number
 - $\hat{R}$ : Gelman-Rubin convergence statistic
 
-### Recall : Possible reasons of divergence :
+### How these tools detect divergence ?
+
+#### One more time, Possible reasons of divergence :
 - too short chains : high correlation, start value bias
 - Programming error (sometimes difficult to find)
 - Poor priors
@@ -293,7 +307,7 @@ Any suggestion ?
 
 ---
 
-## How to check divergence (General methods)
+## How to check divergence (General methods) ?
 
 ```{r echo=FALSE}
 knitr::include_graphics("./img/trace_autocorrelation.jpg")

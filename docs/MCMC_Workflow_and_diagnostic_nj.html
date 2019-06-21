@@ -105,33 +105,33 @@ Que fait MCMC ?
 
 ---
 
-### Modélisation : **Context**, **Model** and **Data**
+### Modélisation : **Contexte**, **Modèle** et **Data**
 
 --
 
 .pull-left[
-<div id="htmlwidget-720abe2af80de4424f3d" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-720abe2af80de4424f3d">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0b4a849a4bd58f71816e" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0b4a849a4bd58f71816e">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-64113715320b5a1363b5" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-64113715320b5a1363b5">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-11848944a5fb459a8c4e" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-11848944a5fb459a8c4e">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 A un moment donné, on a
 
-- Context
-- Model (paramétrique)
-- Data
+- Contexte (du problème envisagé)
+- Modèle (avec des parametres inconnus) 
+- Données
 
 --
 
-&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; : Le modèle doit être &lt;span style="color:red"&gt;paramétrique&lt;/span&gt; pour utiliser la méthode MCMC.
+&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; : La méthode MCMC n'envisage que les modèles  **paramétriques**.
 
 ---
 
@@ -151,8 +151,20 @@ A un moment donné, on a
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
 
 --
-<div id="htmlwidget-09bc2def29f52e698623" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-09bc2def29f52e698623">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+.pull-left[
+Etant donnée
+
+- Contexte du problème
+- Modèle (parametres inconnus) 
+- Données
+]
+
+--
+
+.pull-right[
+<div id="htmlwidget-514f81a268d64e797f0b" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-514f81a268d64e797f0b">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
 
 
 ---
@@ -173,19 +185,19 @@ A un moment donné, on a
 
 --
 
-- **Ci-dessus**, simulation Monte Carlo : Méthode générale pour calculer l'**aire**
+- **Ci-dessus**, simulation Monte Carlo : Méthode générale pour **calculer l'aire**
 
 `$$\small \frac{nb(Rouges)}{nb(Total)} * Aire(Total) \longrightarrow Aire(polygone)$$`
 
 --
 
-- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour les simuler la distribution *a posteriori*. *e.g.*
+- Dans l'**apprentissage bayésien des paramètres**, MCMC : méthode générale pour **echantillonner selon la distribution _a posteriori_**. *e.g.*
 
 `$$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$`
 
 --
 
-&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; Approximation MCMC marche si les chaines &lt;span style="color:red"&gt;convergent&lt;/span&gt; !!!
+&lt;span style="color:red"&gt;T-M Message&lt;/span&gt; : Approximation MCMC marche si les chaines &lt;span style="color:red"&gt;convergent&lt;/span&gt; !!!
 
 ---
 class: inverse, middle, center
@@ -243,7 +255,7 @@ With demo in shinystan
 
 ---
 
-## Recalls
+## Recall
 
 ### Possible reasons of divergence :
 - too short chains
@@ -264,13 +276,15 @@ With demo in shinystan
 
 Any suggestion ?
 
-- Trace plot
+- MCMC Trace plot
 - k-lag autocorrelation plot
 - correlation plot
-- `\(N_{eff}\)` : Nombre effectif
+- `\(N_{eff}\)` : Effectif Number
 - `\(\hat{R}\)` : Gelman-Rubin convergence statistic
 
-### Recall : Possible reasons of divergence :
+### How these tools detect divergence ?
+
+#### One more time, Possible reasons of divergence :
 - too short chains : high correlation, start value bias
 - Programming error (sometimes difficult to find)
 - Poor priors
@@ -289,7 +303,7 @@ Any suggestion ?
 
 ---
 
-## How to check divergence (General methods)
+## How to check divergence (General methods) ?
 
 ![](./img/trace_autocorrelation.jpg)&lt;!-- --&gt;
 
