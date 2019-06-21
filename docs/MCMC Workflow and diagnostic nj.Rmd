@@ -234,12 +234,12 @@ Kenneth Shirley
 --
 4. If divergence detected, 
     - possible reasons :
-        - too short chains
-        - Programming error (sometimes difficult to find)
-        - Poor priors
-        - Parameters are too correlated (identifiability problem)
-        - complex posterior
-        - Wrong model !!!
+        - Too **short chains** : high correlation, start value bias
+        - Programming **error** (sometimes difficult to find)
+        - Poor **priors**
+        - Parameters are too correlated (**identifiability** problem)
+        - **Complex posterior**
+        - **Wrong model** !!!
     - possible solutions : 
         - long run (continue from where last MCMC ended)
 --
@@ -262,12 +262,12 @@ With demo in shinystan
 ## Recall
 
 ### Possible reasons of divergence :
-- too short chains
-- Programming error (sometimes difficult to find)
-- Poor priors
-- Parameters are too correlated (identifiability problem)
-- complex posterior
-- Wrong model !!!
+- Too **short chains** : high correlation, start value bias
+- Programming **error** (sometimes difficult to find)
+- Poor **priors**
+- Parameters are too correlated (**identifiability** problem)
+- **Complex posterior**
+- **Wrong model** !!!
 
 ### Diagnostic of MCMC :
 - You can never prove that MCMC chains **converge**.
@@ -292,12 +292,12 @@ Any suggestion ?
 --
 
 #### One more time, Possible reasons of divergence :
-- too short chains : high correlation, start value bias
-- Programming error (sometimes difficult to find)
-- Poor priors
-- Parameters are too correlated (identifiability problem)
-- complex posterior
-- Wrong model !!!
+- Too **short chains** : high correlation, start value bias
+- Programming **error** (sometimes difficult to find)
+- Poor **priors**
+- Parameters are too correlated (**identifiability** problem)
+- **Complex posterior**
+- **Wrong model** !!!
 
 <!-- ??? -->
 
