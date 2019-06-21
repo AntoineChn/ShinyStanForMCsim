@@ -10,7 +10,7 @@ my_mcmc2 = read.delim("./data/steatosis.mcmc_A.2.1.out")
 
 # Check head 
 head(my_mcmc1)
-# str(my_mcmc1)
+str(my_mcmc1)
 
 # head(my_mcmc2)
 # str(my_mcmc2)
