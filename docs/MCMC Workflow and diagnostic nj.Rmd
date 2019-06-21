@@ -293,7 +293,7 @@ Any suggestion ?
 
 ---
 
-## How to check divergence (méthode générale)
+## How to check divergence (General methods)
 
 ```{r echo=FALSE}
 knitr::include_graphics("./img/trace_autocorrelation.jpg")

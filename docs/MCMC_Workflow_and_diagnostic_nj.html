@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-3717fd0d1b1b259a9c66" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3717fd0d1b1b259a9c66">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-720abe2af80de4424f3d" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-720abe2af80de4424f3d">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-dd24328176bd215ef80f" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dd24328176bd215ef80f">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-64113715320b5a1363b5" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-64113715320b5a1363b5">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -151,8 +151,8 @@ A un moment donné, on a
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
 
 --
-<div id="htmlwidget-13bebc4cc14d6a98b420" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-13bebc4cc14d6a98b420">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-09bc2def29f52e698623" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-09bc2def29f52e698623">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -289,7 +289,7 @@ Any suggestion ?
 
 ---
 
-## How to check divergence (méthode générale)
+## How to check divergence (General methods)
 
 ![](./img/trace_autocorrelation.jpg)&lt;!-- --&gt;
 
