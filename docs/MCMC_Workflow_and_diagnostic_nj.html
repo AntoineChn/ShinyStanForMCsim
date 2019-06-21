@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-7bc735a732d8b17fe501" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7bc735a732d8b17fe501">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3717fd0d1b1b259a9c66" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3717fd0d1b1b259a9c66">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-192a2000d970633f21f7" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-192a2000d970633f21f7">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dd24328176bd215ef80f" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dd24328176bd215ef80f">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -151,8 +151,8 @@ A un moment donné, on a
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
 
 --
-<div id="htmlwidget-b1f0ff2cf4f3795d13b2" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b1f0ff2cf4f3795d13b2">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-13bebc4cc14d6a98b420" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13bebc4cc14d6a98b420">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -294,12 +294,12 @@ Any suggestion ?
 ![](./img/trace_autocorrelation.jpg)&lt;!-- --&gt;
 
 - `\(\hat{R} \simeq 1\)`, `\(\hat{R} \leq 1.1\)`
-- `\(N_{eff}\)` 
+- `\(N_{eff}\)`
     - `\(N_{eff}\)` estimé suffisamment grand 
     - ratio `\(N_{eff} / N_{total}\)` grand
-- Autocorrelation faible
-    - sinon, exploitation lonte d'espace des parametres
-- Correlation faible
+- **Autocorrelation** faible
+    - sinon, exploitation lente d'espace des parametres
+- **Correlation** faible
     - sinon, problème d'identifiabilité
 
 ---

@@ -300,12 +300,12 @@ knitr::include_graphics("./img/trace_autocorrelation.jpg")
 ```
 
 - $\hat{R} \simeq 1$, $\hat{R} \leq 1.1$
-- $N_{eff}$ 
+- $N_{eff}$
     - $N_{eff}$ estimé suffisamment grand 
     - ratio $N_{eff} / N_{total}$ grand
-- Autocorrelation faible
-    - sinon, exploitation lonte d'espace des parametres
-- Correlation faible
+- **Autocorrelation** faible
+    - sinon, exploitation lente d'espace des parametres
+- **Correlation** faible
     - sinon, problème d'identifiabilité
 
 ---
