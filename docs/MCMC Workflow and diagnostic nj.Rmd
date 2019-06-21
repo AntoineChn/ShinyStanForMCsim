@@ -131,7 +131,7 @@ A un moment donné, on a
 
 ### Modélisation : Parameter learning $\tiny\text{/ inference / calibration / estimation}$
 
-- Use **Data** to update what we know about parameters.
+- Use **Data** to update what we know about the parameters.
 
 --
 
@@ -196,11 +196,13 @@ class: inverse, middle, center
 
 # MCMC : Workflow / Strategy
 
-Biblio : Handbook of MCMC chap 6
+Biblio : Handbook of MCMC chap 6 ([Lien](http://www.mcmchandbook.net/HandbookChapter6.pdf))
 
 by 
-- Andrew Gelman
-- Kenneth Shirley
+
+Andrew Gelman
+
+Kenneth Shirley
 
 ---
 
@@ -255,7 +257,7 @@ With demo in shinystan
 - complex posterior
 - Wrong model !!!
 
-### Diagnostic of MCMC (<span style="color:red">Take-home message</span>) :
+### Diagnostic of MCMC :
 - You can never prove that MCMC chains **converge**.
     - If (no **statistical diagnostic / test** shows any sign of **divergence**)
     - Then (you **admet / believe** the chains **converge**).
@@ -265,6 +267,12 @@ With demo in shinystan
 ## Brainstorming : how to check divergence
 
 Any suggestion ?
+
+- Trace plot
+- k-lag autocorrelation plot
+- correlation plot
+- $N_{eff}$ : Nombre effectif
+- $\hat{R}$ : Gelman-Rubin convergence statistic
 
 ### Recall : Possible reasons of divergence :
 - too short chains : high correlation, start value bias
@@ -292,9 +300,13 @@ knitr::include_graphics("./img/trace_autocorrelation.jpg")
 ```
 
 - $\hat{R} \simeq 1$, $\hat{R} \leq 1.1$
-- $N_{eff}$ estimé suffisamment grand et $N_{eff} / N_{total}$ grand
-- auto correlation
-- correlation
+- $N_{eff}$ 
+    - $N_{eff}$ estimé suffisamment grand 
+    - ratio $N_{eff} / N_{total}$ grand
+- Autocorrelation faible
+    - sinon, exploitation lonte d'espace des parametres
+- Correlation faible
+    - sinon, problème d'identifiabilité
 
 ---
 class: inverse, middle, center

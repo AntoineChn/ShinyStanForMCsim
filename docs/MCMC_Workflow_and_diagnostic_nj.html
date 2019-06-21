@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-158541344ae59655c0a0" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-158541344ae59655c0a0">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7bc735a732d8b17fe501" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7bc735a732d8b17fe501">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-3010bd3c4f4d3d217032" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3010bd3c4f4d3d217032">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-192a2000d970633f21f7" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-192a2000d970633f21f7">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -137,7 +137,7 @@ A un moment donné, on a
 
 ### Modélisation : Parameter learning `\(\tiny\text{/ inference / calibration / estimation}\)`
 
-- Use **Data** to update what we know about parameters.
+- Use **Data** to update what we know about the parameters.
 
 --
 
@@ -151,8 +151,8 @@ A un moment donné, on a
 `$$Posterior(\theta \mid \mathcal{D}) \propto Likelihood(\theta, \mathcal{D}) \times Prior(\theta)$$`
 
 --
-<div id="htmlwidget-a477fb4f4c7712e97be1" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a477fb4f4c7712e97be1">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b1f0ff2cf4f3795d13b2" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b1f0ff2cf4f3795d13b2">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 
 ---
@@ -179,7 +179,7 @@ A un moment donné, on a
 
 --
 
-- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour simuler la distribution *a posteriori*. *e.g.*
+- Dans l'**apprentissage des paramètres** (avec l'approche Bayésienne), MCMC : méthode générale pour les simuler la distribution *a posteriori*. *e.g.*
 
 `$$\small Hist(MCMC\,samples) \longrightarrow Posterior(\theta \mid \mathcal{D})$$`
 
@@ -192,11 +192,13 @@ class: inverse, middle, center
 
 # MCMC : Workflow / Strategy
 
-Biblio : Handbook of MCMC chap 6
+Biblio : Handbook of MCMC chap 6 ([Lien](http://www.mcmchandbook.net/HandbookChapter6.pdf))
 
 by 
-- Andrew Gelman
-- Kenneth Shirley
+
+Andrew Gelman
+
+Kenneth Shirley
 
 ---
 
@@ -251,7 +253,7 @@ With demo in shinystan
 - complex posterior
 - Wrong model !!!
 
-### Diagnostic of MCMC (&lt;span style="color:red"&gt;Take-home message&lt;/span&gt;) :
+### Diagnostic of MCMC :
 - You can never prove that MCMC chains **converge**.
     - If (no **statistical diagnostic / test** shows any sign of **divergence**)
     - Then (you **admet / believe** the chains **converge**).
@@ -261,6 +263,12 @@ With demo in shinystan
 ## Brainstorming : how to check divergence
 
 Any suggestion ?
+
+- Trace plot
+- k-lag autocorrelation plot
+- correlation plot
+- `\(N_{eff}\)` : Nombre effectif
+- `\(\hat{R}\)` : Gelman-Rubin convergence statistic
 
 ### Recall : Possible reasons of divergence :
 - too short chains : high correlation, start value bias
@@ -286,9 +294,13 @@ Any suggestion ?
 ![](./img/trace_autocorrelation.jpg)&lt;!-- --&gt;
 
 - `\(\hat{R} \simeq 1\)`, `\(\hat{R} \leq 1.1\)`
-- `\(N_{eff}\)` estimé suffisamment grand et `\(N_{eff} / N_{total}\)` grand
-- auto correlation
-- correlation
+- `\(N_{eff}\)` 
+    - `\(N_{eff}\)` estimé suffisamment grand 
+    - ratio `\(N_{eff} / N_{total}\)` grand
+- Autocorrelation faible
+    - sinon, exploitation lonte d'espace des parametres
+- Correlation faible
+    - sinon, problème d'identifiabilité
 
 ---
 class: inverse, middle, center
