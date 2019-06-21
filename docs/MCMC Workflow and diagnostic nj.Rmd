@@ -286,7 +286,10 @@ Any suggestion ?
 - $N_{eff}$ : Effectif Number
 - $\hat{R}$ : Gelman-Rubin convergence statistic
 
+
 ### How these tools detect divergence ?
+
+--
 
 #### One more time, Possible reasons of divergence :
 - too short chains : high correlation, start value bias
