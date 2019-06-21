@@ -110,15 +110,15 @@ Que fait MCMC ?
 --
 
 .pull-left[
-<div id="htmlwidget-0dd5899cd575c3bd2e4d" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0dd5899cd575c3bd2e4d">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-24d3f8a76473119de82d" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-24d3f8a76473119de82d">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Modèle;\n  {Modèle} -> Data ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
 
 .pull-right[
-<div id="htmlwidget-a0408849197874f1c7cb" style="width:504px;height:360px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a0408849197874f1c7cb">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème Data Modèle} ;\n  Problème -> Data;\n  Data -> Modèle ;\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f847740e0e86f2d71650" style="width:504px;height:360px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f847740e0e86f2d71650">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte; Problème ; Data ; Modèle\n\n  # add edge statements\n  Contexte -> {Problème} ;\n  Problème -> Data;\n  Data -> Modèle ;\n  Problème -> Modèle ;\n  Contexte -> Modèle\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 --
@@ -162,8 +162,8 @@ Etant donnée
 --
 
 .pull-right[
-<div id="htmlwidget-3fb10d5537c323f9a954" style="width:504px;height:252px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3fb10d5537c323f9a954">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-69d593e49285241c0412" style="width:504px;height:252px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-69d593e49285241c0412">{"x":{"diagram":"digraph {\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 5]\n  \n  # add node statements\n  node [shape = box]\n  Contexte ; Data ; Model ; \n  Prior ; Likelihood ; Posterior\n\n  # add edge statements\n  Contexte -> Prior ;\n  {Data  Model} -> Likelihood ;\n  {Prior Likelihood} -> Posterior\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 

@@ -7,7 +7,9 @@ digraph {
   Contexte; Problème ; Data ; Modèle
 
   # add edge statements
-  Contexte -> {Problème Data Modèle} ;
+  Contexte -> {Problème} ;
   Problème -> Data;
   Data -> Modèle ;
+  Problème -> Modèle ;
+  Contexte -> Modèle
 }
